@@ -54,33 +54,22 @@
             sideArray = Sort(sideArray);
             // Проверяем, являются ли введённые числа сторонами треугольника
             if (Check(sideArray))
-            {
-                // Проверяем, является ли треугольник прямоугольник
-                if (RightCheck(sideArray))
-                {
-                    // Рассчитываем площадь прямоугольного треугольника
-                    return (sideArray[0] * sideArray[1]) / 2;
-                }
-                else
-                {
-                    // Рассчитываем площадь треугольника по формуле Герона
-                    return AreaCalculationWithoutChecks(sideArray);
-                }
-            }
+               // Вычисляем площадь треугольника     
+               return HeronsFormula(sideArray);
             // Введённые числа нее могут являться сторонами треугольника, поэтому выводим площадь равную нулю
             return 0;
         }
         // Расчёт площади треугольника по формуле Герона без проверок для массива сторон
-        public static double AreaCalculationWithoutChecks(double[] sideArray)
+        public static double HeronsFormula(double[] sideArray)
         {
             double semiP = (sideArray[0] + sideArray[1] + sideArray[2]) / 2;
             return Math.Sqrt(semiP * (semiP - sideArray[0]) * (semiP - sideArray[1]) * (semiP - sideArray[2]));
         }
         // Расчёт площади треугольника без проверок по трём сторонам
-        public static double AreaCalculationWithoutChecks(double sideA, double sideB, double sideC)
+        public static double HeronsFormula(double sideA, double sideB, double sideC)
         {
             double[] sideArray = { sideA, sideB, sideC };
-            return AreaCalculationWithoutChecks(sideArray);
+            return HeronsFormula(sideArray);
         }
 
     }
